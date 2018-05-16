@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:super_simple_budget/expense.dart';
+import 'package:super_simple_budget/model/expense.dart';
 
 class ExpenseHistoryRow extends StatelessWidget {
   final Expense expense;

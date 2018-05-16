@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:super_simple_budget/card_to_spend.dart';
-import 'package:super_simple_budget/expense.dart';
-import 'package:super_simple_budget/expense_history_row.dart';
 import 'package:super_simple_budget/generated/i18n.dart';
-import 'package:super_simple_budget/history_divider.dart';
-import 'package:super_simple_budget/input_expense_row.dart';
-import 'package:super_simple_budget/minor_value_card.dart';
+import 'package:super_simple_budget/model/expense.dart';
+import 'package:super_simple_budget/service/database_service.dart';
+import 'package:super_simple_budget/widget/card_to_spend.dart';
+import 'package:super_simple_budget/widget/expense_history_row.dart';
+import 'package:super_simple_budget/widget/history_divider.dart';
+import 'package:super_simple_budget/widget/input_expense_row.dart';
+import 'package:super_simple_budget/widget/minor_value_card.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key}) : super(key: key);
+  final DatabaseService databaseService;
+
+  MainPage({Key key, this.databaseService}) : super(key: key);
 
   @override
   _MainPageState createState() => new _MainPageState();
@@ -18,15 +21,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   double startBudget = 400.0;
 
-  List<Expense> expenses = [
-    new Expense(12.23, new DateTime.now()),
-    new Expense(33.22, new DateTime.now()),
-    new Expense(65.01, new DateTime.now()),
-    new Expense(100.76, new DateTime.now()),
-    new Expense(96.54, new DateTime.now()),
-    new Expense(43.99, new DateTime.now()),
-    new Expense(23.11, new DateTime.now()),
-  ];
+  List<Expense> expenses = [];
 
   double get spent => expenses.fold(0.0, (sum, expense) => sum + expense.value);
 
@@ -36,6 +31,23 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     initializeDateFormatting();
+    _loadExpenses();
+  }
+
+  _loadExpenses() {
+    widget.databaseService
+        .getCurrentExpenses()
+        .then((result) =>
+        setState(() =>
+        expenses =
+        result..sort((ex1, ex2) => ex1.dateTime.compareTo(ex2.dateTime))));
+  }
+
+  _addExpense(Expense expense) {
+    widget.databaseService.addExpense(expense);
+    setState(() {
+      expenses.insert(0, expense);
+    });
   }
 
   @override
@@ -68,7 +80,9 @@ class _MainPageState extends State<MainPage> {
               new CardToSpend(
                 leftToSpend: leftToSpend,
               ),
-              new InputExpenseRow(),
+              new InputExpenseRow(
+                onClick: _addExpense,
+              ),
               new Row(
                 children: <Widget>[
                   new Expanded(

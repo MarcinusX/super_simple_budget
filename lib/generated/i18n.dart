@@ -29,19 +29,12 @@ class S extends WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get add => "Add";
-
   String get leftToSpend => "Left to spend";
-
   String get sumOfExpenses => "Sum of expenses";
-
   String get startingBudget => "Starting budget";
-
   String get history => "History";
-
   String get beginNewCycle => "Begin new cycle";
-
   String get appTitle => "Super Simple Budget";
-
   String get newExpense => "New expense";
 }
 
@@ -57,25 +50,18 @@ class pl extends S {
 
   @override
   String get add => "Dodaj";
-
   @override
   String get leftToSpend => "Zostało do wydania";
-
   @override
   String get sumOfExpenses => "Wuma wydatków";
-
   @override
   String get startingBudget => "Budżet startowy";
-
   @override
   String get history => "Historia";
-
   @override
   String get beginNewCycle => "Rozpocznij nowy okres";
-
   @override
   String get appTitle => "Super Prosty Budżet";
-
   @override
   String get newExpense => "Nowy wydatek";
 }
