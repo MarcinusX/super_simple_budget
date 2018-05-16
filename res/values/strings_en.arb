@@ -1,0 +1,10 @@
+{
+  "appTitle": "Super Simple Budget",
+  "newExpense": "New expense",
+  "add": "Add",
+  "leftToSpend": "Left to spend",
+  "startingBudget": "Starting budget",
+  "sumOfExpenses": "Sum of expenses",
+  "history": "History",
+  "beginNewCycle": "Begin new cycle"
+}

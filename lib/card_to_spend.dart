@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_simple_budget/generated/i18n.dart';
 
 class CardToSpend extends StatelessWidget {
   final double leftToSpend;
@@ -23,7 +24,9 @@ class CardToSpend extends StatelessWidget {
             ),
             new Padding(
               padding: const EdgeInsets.all(8.0),
-              child: new Text("Zostało do wydania"),
+              child: new Text(S
+                  .of(context)
+                  .leftToSpend),
             ),
           ],
         ),

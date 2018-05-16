@@ -3,6 +3,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:super_simple_budget/card_to_spend.dart';
 import 'package:super_simple_budget/expense.dart';
 import 'package:super_simple_budget/expense_history_row.dart';
+import 'package:super_simple_budget/generated/i18n.dart';
 import 'package:super_simple_budget/history_divider.dart';
 import 'package:super_simple_budget/input_expense_row.dart';
 import 'package:super_simple_budget/minor_value_card.dart';
@@ -41,14 +42,18 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Super prosty budżet"),
+        title: new Text(S
+            .of(context)
+            .appTitle),
         actions: <Widget>[
           new PopupMenuButton<String>(
             onSelected: (val) {},
             itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-                  const PopupMenuItem<String>(
+              new PopupMenuItem<String>(
                       value: 'costam',
-                      child: const Text('Rozpocznij nowy okres')),
+                  child: new Text(S
+                      .of(context)
+                      .beginNewCycle)),
                 ],
           ),
         ],
@@ -69,13 +74,17 @@ class _MainPageState extends State<MainPage> {
                   new Expanded(
                     child: new MinorValueCard(
                       value: startBudget,
-                      label: "Budżet startowy",
+                      label: S
+                          .of(context)
+                          .startingBudget,
                     ),
                   ),
                   new Expanded(
                     child: new MinorValueCard(
                       value: spent,
-                      label: "Suma wydatków",
+                      label: S
+                          .of(context)
+                          .sumOfExpenses,
                     ),
                   ),
                 ],
