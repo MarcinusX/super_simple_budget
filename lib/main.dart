@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:super_simple_budget/generated/i18n.dart';
-import 'package:super_simple_budget/service/database_service.dart';
+import 'package:super_simple_budget/service/storage_service.dart';
 import 'package:super_simple_budget/widget/cut_corners_border.dart';
 import 'package:super_simple_budget/widget/main_page.dart';
 
 void main() async {
-  DatabaseService databaseService = new DatabaseService();
-  await databaseService.open();
-  runApp(new MyApp(databaseService: databaseService));
+  StorageService storageService = new StorageService();
+  await storageService.open();
+  runApp(new MyApp(databaseService: storageService));
 }
 
 class MyApp extends StatelessWidget {
-
-  final DatabaseService databaseService;
+  final StorageService databaseService;
 
   const MyApp({Key key, this.databaseService}) : super(key: key);
 
@@ -37,8 +36,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primarySwatch: Colors.yellow,
           accentColor: Colors.yellow),
-      home: new MainPage(databaseService: databaseService),
+      home: new MainPage(storageService: databaseService),
     );
   }
-
 }

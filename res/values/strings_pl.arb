@@ -6,5 +6,11 @@
   "startingBudget": "Budżet startowy",
   "sumOfExpenses": "Wuma wydatków",
   "history": "Historia",
-  "beginNewCycle": "Rozpocznij nowy okres"
+  "beginNewCycle": "Rozpocznij nowy okres",
+  "changeCurrency": "Zmień walutę",
+  "chooseCurrency": "Wybierz walutę",
+  "currencyGBP": "GBP (£)",
+  "currencyUSD": "USD (\$)",
+  "currencyEUR": "EUR (€)",
+  "currencyPLN": "PLN (zł)"
 }

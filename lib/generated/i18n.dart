@@ -29,13 +29,32 @@ class S extends WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get add => "Add";
+
   String get leftToSpend => "Left to spend";
+
   String get sumOfExpenses => "Sum of expenses";
+
   String get startingBudget => "Starting budget";
+
+  String get changeCurrency => "Change currency";
+
+  String get currencyEUR => "EUR (€)";
+
   String get history => "History";
-  String get beginNewCycle => "Begin new cycle";
+
   String get appTitle => "Super Simple Budget";
+
+  String get currencyGBP => "GBP (£)";
+
+  String get currencyPLN => "PLN (zł)";
+
+  String get beginNewCycle => "Begin new cycle";
+
+  String get chooseCurrency => "Choose currency";
+
   String get newExpense => "New expense";
+
+  String currencyUSD(String) => "USD (\$)";
 }
 
 class en extends S {
@@ -50,20 +69,45 @@ class pl extends S {
 
   @override
   String get add => "Dodaj";
+
   @override
   String get leftToSpend => "Zostało do wydania";
+
   @override
   String get sumOfExpenses => "Wuma wydatków";
+
   @override
   String get startingBudget => "Budżet startowy";
+
+  @override
+  String get changeCurrency => "Zmień walutę";
+
+  @override
+  String get currencyEUR => "EUR (€)";
+
   @override
   String get history => "Historia";
-  @override
-  String get beginNewCycle => "Rozpocznij nowy okres";
+
   @override
   String get appTitle => "Super Prosty Budżet";
+
+  @override
+  String get currencyGBP => "GBP (£)";
+
+  @override
+  String get currencyPLN => "PLN (zł)";
+
+  @override
+  String get beginNewCycle => "Rozpocznij nowy okres";
+
+  @override
+  String get chooseCurrency => "Wybierz walutę";
+
   @override
   String get newExpense => "Nowy wydatek";
+
+  @override
+  String currencyUSD(String) => "USD (\$)";
 }
 
 class GeneratedLocalizationsDelegate

@@ -3,7 +3,6 @@ import 'package:super_simple_budget/generated/i18n.dart';
 import 'package:super_simple_budget/model/expense.dart';
 
 class InputExpenseRow extends StatefulWidget {
-
   final Function(Expense) onClick;
 
   const InputExpenseRow({Key key, this.onClick}) : super(key: key);
@@ -13,16 +12,13 @@ class InputExpenseRow extends StatefulWidget {
 }
 
 class _InputExpenseRowState extends State<InputExpenseRow> {
-
   TextEditingController _inputController;
-
 
   @override
   void initState() {
     super.initState();
     _inputController = new TextEditingController();
   }
-
 
   @override
   void dispose() {
@@ -69,11 +65,13 @@ class _InputExpenseRowState extends State<InputExpenseRow> {
                         .copyWith(color: Colors.black),
                   ),
                   onPressed: () {
-                    double value = double.parse(_inputController.value.text);
-                    DateTime dateTime = new DateTime.now();
-                    widget.onClick(new Expense(value, dateTime));
-                    _inputController.clear();
-                    FocusScope.of(context).requestFocus(new FocusNode());
+                    try {
+                      double value = double.parse(_inputController.value.text);
+                      DateTime dateTime = new DateTime.now();
+                      widget.onClick(new Expense(value, dateTime));
+                      _inputController.clear();
+                      FocusScope.of(context).requestFocus(new FocusNode());
+                    } catch (FormatException) {}
                   },
                   shape: new BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),

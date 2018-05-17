@@ -6,5 +6,11 @@
   "startingBudget": "Starting budget",
   "sumOfExpenses": "Sum of expenses",
   "history": "History",
-  "beginNewCycle": "Begin new cycle"
+  "beginNewCycle": "Begin new cycle",
+  "changeCurrency": "Change currency",
+  "chooseCurrency": "Choose currency",
+  "currencyGBP": "GBP (£)",
+  "currencyUSD": "USD (\$)",
+  "currencyEUR": "EUR (€)",
+  "currencyPLN": "PLN (zł)"
 }

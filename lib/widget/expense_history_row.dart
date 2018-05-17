@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:super_simple_budget/model/currency.dart';
 import 'package:super_simple_budget/model/expense.dart';
 
 class ExpenseHistoryRow extends StatelessWidget {
   final Expense expense;
+  final Currency currency;
 
-  const ExpenseHistoryRow({Key key, this.expense}) : super(key: key);
+  const ExpenseHistoryRow({Key key, this.expense, this.currency})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class ExpenseHistoryRow extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
       ),
       child: new ListTile(
-        title: new Text(expense.value.toStringAsFixed(2) + " zł"),
+        title: new Text(valueWithCurrency(expense.value, currency)),
         trailing: new Text(new DateFormat(
                 'EEEE, d MMMM', Localizations.localeOf(context).toString())
             .format(expense.dateTime)),
