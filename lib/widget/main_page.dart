@@ -9,6 +9,7 @@ import 'package:super_simple_budget/widget/expense_history_row.dart';
 import 'package:super_simple_budget/widget/history_divider.dart';
 import 'package:super_simple_budget/widget/input_expense_row.dart';
 import 'package:super_simple_budget/widget/minor_value_card.dart';
+import 'package:super_simple_budget/widget/new_cycle_dialog.dart';
 
 class MainPage extends StatefulWidget {
   final StorageService storageService;
@@ -34,6 +35,7 @@ class _MainPageState extends State<MainPage> {
     initializeDateFormatting();
     _loadExpenses();
     this.currency = widget.storageService.getCurrency();
+    this.startBudget = widget.storageService.getStartingBudget() ?? 0.0;
   }
 
   _loadExpenses() {
@@ -94,6 +96,9 @@ class _MainPageState extends State<MainPage> {
               switch (val) {
                 case 'CURRENCY':
                   _openCurrencyDialog();
+                  break;
+                case 'NEW_CYCLE':
+                  _openNewCycleDialog();
                   break;
               }
             },
@@ -165,5 +170,19 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
     );
+  }
+
+  void _openNewCycleDialog({bool reset = true}) async {
+    double newBudget = await showDialog<double>(
+        context: context, builder: (context) => new NewCycleDialog());
+    if (newBudget != null) {
+      await widget.storageService.saveStartingBudget(newBudget, reset: true);
+      setState(() {
+        this.startBudget = newBudget;
+        if (reset) {
+          this.expenses = [];
+        }
+      });
+    }
   }
 }

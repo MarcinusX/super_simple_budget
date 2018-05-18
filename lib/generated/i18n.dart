@@ -30,6 +30,8 @@ class S extends WidgetsLocalizations {
 
   String get add => "Add";
 
+  String get cancel => "Cancel";
+
   String get leftToSpend => "Left to spend";
 
   String get sumOfExpenses => "Sum of expenses";
@@ -44,6 +46,8 @@ class S extends WidgetsLocalizations {
 
   String get appTitle => "Super Simple Budget";
 
+  String get confirm => "Confirm";
+
   String get currencyGBP => "GBP (£)";
 
   String get currencyPLN => "PLN (zł)";
@@ -53,6 +57,8 @@ class S extends WidgetsLocalizations {
   String get chooseCurrency => "Choose currency";
 
   String get newExpense => "New expense";
+
+  String get budget => "Budget";
 
   String currencyUSD(String) => "USD (\$)";
 }
@@ -69,6 +75,9 @@ class pl extends S {
 
   @override
   String get add => "Dodaj";
+
+  @override
+  String get cancel => "Anuluj";
 
   @override
   String get leftToSpend => "Zostało do wydania";
@@ -92,6 +101,9 @@ class pl extends S {
   String get appTitle => "Super Prosty Budżet";
 
   @override
+  String get confirm => "Zatwierdź";
+
+  @override
   String get currencyGBP => "GBP (£)";
 
   @override
@@ -105,6 +117,9 @@ class pl extends S {
 
   @override
   String get newExpense => "Nowy wydatek";
+
+  @override
+  String get budget => "Budżet";
 
   @override
   String currencyUSD(String) => "USD (\$)";

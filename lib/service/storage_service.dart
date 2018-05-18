@@ -46,7 +46,10 @@ class StorageService {
     return sharedPrefs.getDouble(_keyBudget);
   }
 
-  void saveStartingBudget(double budget) {
+  Future saveStartingBudget(double budget, {bool reset = false}) async {
     sharedPrefs.setDouble(_keyBudget, budget);
+    if (reset) {
+      await dbHelper.deleteAllExpense();
+    }
   }
 }

@@ -12,5 +12,8 @@
   "currencyGBP": "GBP (£)",
   "currencyUSD": "USD (\$)",
   "currencyEUR": "EUR (€)",
-  "currencyPLN": "PLN (zł)"
+  "currencyPLN": "PLN (zł)",
+  "budget": "Budget",
+  "cancel": "Cancel",
+  "confirm": "Confirm"
 }
