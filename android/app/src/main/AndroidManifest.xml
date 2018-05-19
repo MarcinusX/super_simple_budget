@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mszalek.supersimplebudget.supersimplebudget">
+          package="com.mszalek.super_simple_budget">
 
     <!-- The INTERNET permission is required for development. Specifically,
          flutter needs it to communicate with the running application
@@ -13,9 +13,9 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <application
-        android:name="io.flutter.app.FlutterApplication"
-        android:label="super_simple_budget"
-        android:icon="@mipmap/ic_launcher">
+            android:name="io.flutter.app.FlutterApplication"
+            android:label="Budget"
+            android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

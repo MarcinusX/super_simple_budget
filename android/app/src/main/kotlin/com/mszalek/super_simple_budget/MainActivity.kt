@@ -1,4 +1,4 @@
-package com.mszalek.supersimplebudget.supersimplebudget
+package com.mszalek.super_simple_budget
 
 import android.os.Bundle
 
