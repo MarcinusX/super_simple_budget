@@ -15,9 +15,9 @@
         version="1.1"
         inkscape:version="0.91 r13725"
         sodipodi:docname="icon.svg"
-        inkscape:export-filename="icon"
-        inkscape:export-xdpi="116.64034"
-        inkscape:export-ydpi="116.64034">
+        inkscape:export-filename="icon.png"
+        inkscape:export-xdpi="115.19157"
+        inkscape:export-ydpi="115.19157">
     <defs
             id="defs4"/>
     <sodipodi:namedview
@@ -28,10 +28,10 @@
             inkscape:pageopacity="0.0"
             inkscape:pageshadow="2"
             inkscape:zoom="0.87327348"
-            inkscape:cx="131.79935"
-            inkscape:cy="395.03157"
+            inkscape:cx="-51.124361"
+            inkscape:cy="393.85013"
             inkscape:document-units="px"
-            inkscape:current-layer="layer1"
+            inkscape:current-layer="layer3"
             showgrid="false"
             inkscape:window-width="1855"
             inkscape:window-height="1056"
@@ -46,33 +46,47 @@
                 <dc:format>image/svg+xml</dc:format>
                 <dc:type
                         rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-                <dc:title></dc:title>
+                <dc:title/>
             </cc:Work>
         </rdf:RDF>
     </metadata>
     <g
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
-            id="layer1">
+            id="layer1"
+            style="display:inline">
         <path
-                style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:4.93827152;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-                d="M 95.644531 654.83203 A 95.767632 95.767632 0 0 1 2.46875 748.04297 L 2.46875 956.7168 A 95.767632 95.767632 0 0 1 95.679688 1049.8926 L 304.35547 1049.8926 A 95.767632 95.767632 0 0 1 397.53125 956.68164 L 397.53125 748.00586 A 95.767632 95.767632 0 0 1 304.32031 654.83203 L 95.644531 654.83203 z "
-                id="rect4136"/>
+                style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+                d="M 75 652.36133 L 0 727.36133 L 0 977.36133 L 75 1052.3613 L 325 1052.3613 L 400 977.36133 L 400 727.36133 L 325 652.36133 L 75 652.36133 z "
+                id="rect4168"/>
     </g>
     <g
             inkscape:groupmode="layer"
             id="layer3"
-            inkscape:label="Layer 3">
+            inkscape:label="Layer 3"
+            style="display:inline">
         <path
                 inkscape:connector-curvature="0"
-                style="fill:#333333;fill-opacity:1;stroke:none;stroke-width:4.93827152;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-                d="m 230.61459,730.99641 -63.37891,241.64647 145.58204,40.10732 a 95.767632,95.767632 0 0 1 84.55859,-55.97642 l 0,-181.83206 -166.76172,-43.94531 z"
-                id="rect4136-3"/>
+                style="display:inline;fill:#333333;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+                d="M 325.62697,652.95985 80,1052.3622 l 245.02931,0 75,-75 0,-250 -74.40234,-74.40235 z"
+                id="rect4168-3"/>
+    </g>
+    <g
+            inkscape:groupmode="layer"
+            id="layer5"
+            inkscape:label="Layer 5">
+        <circle
+                style="display:inline;fill:#d4aa00;fill-opacity:1;stroke:#d4aa00;stroke-width:5.50094748;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+                id="path4171-7"
+                cx="207.69312"
+                cy="857.62457"
+                r="122.24953"/>
     </g>
     <g
             inkscape:groupmode="layer"
             id="layer2"
-            inkscape:label="Layer 2">
+            inkscape:label="Layer 2"
+            style="display:inline">
         <circle
                 style="fill:#ffdd55;fill-opacity:1;stroke:#ffdd55;stroke-width:5.50094748;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
                 id="path4171"
