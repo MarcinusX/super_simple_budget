@@ -5,6 +5,7 @@ import 'package:super_simple_budget/model/currency.dart';
 import 'package:super_simple_budget/model/expense.dart';
 import 'package:super_simple_budget/service/storage_service.dart';
 import 'package:super_simple_budget/widget/card_to_spend.dart';
+import 'package:super_simple_budget/widget/change_budget_dialog.dart';
 import 'package:super_simple_budget/widget/expense_history_row.dart';
 import 'package:super_simple_budget/widget/history_divider.dart';
 import 'package:super_simple_budget/widget/input_expense_row.dart';
@@ -136,12 +137,15 @@ class _MainPageState extends State<MainPage> {
               new Row(
                 children: <Widget>[
                   new Expanded(
-                    child: new MinorValueCard(
-                      value: startBudget,
-                      label: S
-                          .of(context)
-                          .startingBudget,
-                      currency: currency,
+                    child: new GestureDetector(
+                      onTap: _openChangeBudgetDialog,
+                      child: new MinorValueCard(
+                        value: startBudget,
+                        label: S
+                            .of(context)
+                            .startingBudget,
+                        currency: currency,
+                      ),
                     ),
                   ),
                   new Expanded(
@@ -172,9 +176,24 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
+  void _openChangeBudgetDialog() async {
+    double newBudget = await showDialog<double>(
+      context: context,
+      builder: (context) => new ChangeBudgetDialog(previousBudget: startBudget),
+    );
+    if (newBudget != null) {
+      await widget.storageService.saveStartingBudget(newBudget, reset: false);
+      setState(() {
+        this.startBudget = newBudget;
+      });
+    }
+  }
+
   void _openNewCycleDialog({bool reset = true}) async {
     double newBudget = await showDialog<double>(
-        context: context, builder: (context) => new NewCycleDialog());
+      context: context,
+      builder: (context) => new NewCycleDialog(),
+    );
     if (newBudget != null) {
       await widget.storageService.saveStartingBudget(newBudget, reset: true);
       setState(() {

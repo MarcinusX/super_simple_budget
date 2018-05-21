@@ -15,5 +15,6 @@
   "currencyPLN": "PLN (zł)",
   "budget": "Budget",
   "cancel": "Cancel",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "changeBudget": "Change budget"
 }

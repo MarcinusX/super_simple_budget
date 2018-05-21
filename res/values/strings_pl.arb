@@ -4,7 +4,7 @@
   "add": "Dodaj",
   "leftToSpend": "Zostało do wydania",
   "startingBudget": "Budżet startowy",
-  "sumOfExpenses": "Wuma wydatków",
+  "sumOfExpenses": "Suma wydatków",
   "history": "Historia",
   "beginNewCycle": "Rozpocznij nowy okres",
   "changeCurrency": "Zmień walutę",
@@ -15,5 +15,7 @@
   "currencyPLN": "PLN (zł)",
   "budget": "Budżet",
   "cancel": "Anuluj",
-  "confirm": "Zatwierdź"
+  "confirm": "Zatwierdź",
+  "changeBudget": "Zmień budżet"
+
 }
