@@ -1,4 +1,4 @@
-# super_simple_budget
+# super_simple_budget [![Build Status](https://travis-ci.org/MarcinusX/super_simple_budget.svg?branch=master)](https://travis-ci.org/MarcinusX/super_simple_budget)
 
 Super simple budget app
 

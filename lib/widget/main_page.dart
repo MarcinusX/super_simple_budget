@@ -87,6 +87,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
+        key: new Key("app_bar"),
         centerTitle: true,
         title: new Text(S
             .of(context)
@@ -116,7 +117,7 @@ class _MainPageState extends State<MainPage> {
                     .of(context)
                     .changeCurrency),
               ),
-                ],
+            ],
           ),
         ],
       ),
