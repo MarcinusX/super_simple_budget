@@ -31,12 +31,13 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
       ],
       theme: new ThemeData(
-          inputDecorationTheme: InputDecorationTheme(
-            border: new CutCornersBorder(),
-          ),
-          brightness: Brightness.dark,
-          primarySwatch: Colors.yellow,
-          accentColor: Colors.yellow),
+        inputDecorationTheme: InputDecorationTheme(
+          border: new CutCornersBorder(),
+        ),
+        brightness: Brightness.dark,
+        primarySwatch: Colors.yellow,
+        accentColor: Colors.yellow,
+      ),
       home: new MainPage(storageService: databaseService),
     );
   }

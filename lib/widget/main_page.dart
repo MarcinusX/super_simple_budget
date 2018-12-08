@@ -40,10 +40,9 @@ class _MainPageState extends State<MainPage> {
   }
 
   _loadExpenses() {
-    widget.storageService.getCurrentExpenses().then((result) =>
-        setState(() =>
+    widget.storageService.getCurrentExpenses().then((result) => setState(() =>
         expenses = result
-          ..sort((ex1, ex2) => ex1.dateTime.compareTo(ex2.dateTime))));
+          ..sort((ex1, ex2) => ex2.dateTime.compareTo(ex1.dateTime))));
   }
 
   _addExpense(Expense expense) {
@@ -53,25 +52,29 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+  _deleteExpense(Expense expense) {
+    widget.storageService.deleteExpense(expense);
+    setState(() {
+      expenses.remove(expense);
+    });
+  }
+
   _openCurrencyDialog() async {
     Currency currency = await showDialog(
         context: context,
         builder: (context) {
           return new SimpleDialog(
-            title: new Text(S
-                .of(context)
-                .chooseCurrency),
+            title: new Text(S.of(context).chooseCurrency),
             children: Currency.currencies
                 .map(
-                  (currency) =>
-              new SimpleDialogOption(
-                onPressed: () => Navigator.of(context).pop(currency),
-                child: new ListTile(
-                  selected: currency == this.currency,
-                  title: new Text(currency.getName(context)),
-                ),
-              ),
-            )
+                  (currency) => new SimpleDialogOption(
+                        onPressed: () => Navigator.of(context).pop(currency),
+                        child: new ListTile(
+                          selected: currency == this.currency,
+                          title: new Text(currency.getName(context)),
+                        ),
+                      ),
+                )
                 .toList(),
           );
         });
@@ -89,9 +92,7 @@ class _MainPageState extends State<MainPage> {
       appBar: new AppBar(
         key: new Key("app_bar"),
         centerTitle: true,
-        title: new Text(S
-            .of(context)
-            .appTitle),
+        title: new Text(S.of(context).appTitle),
         actions: <Widget>[
           new PopupMenuButton<String>(
             onSelected: (val) {
@@ -105,19 +106,15 @@ class _MainPageState extends State<MainPage> {
               }
             },
             itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-              new PopupMenuItem<String>(
-                value: 'NEW_CYCLE',
-                child: new Text(S
-                    .of(context)
-                    .beginNewCycle),
-              ),
-              new PopupMenuItem<String>(
-                value: 'CURRENCY',
-                child: new Text(S
-                    .of(context)
-                    .changeCurrency),
-              ),
-            ],
+                  new PopupMenuItem<String>(
+                    value: 'NEW_CYCLE',
+                    child: new Text(S.of(context).beginNewCycle),
+                  ),
+                  new PopupMenuItem<String>(
+                    value: 'CURRENCY',
+                    child: new Text(S.of(context).changeCurrency),
+                  ),
+                ],
           ),
         ],
       ),
@@ -142,9 +139,7 @@ class _MainPageState extends State<MainPage> {
                       onTap: _openChangeBudgetDialog,
                       child: new MinorValueCard(
                         value: startBudget,
-                        label: S
-                            .of(context)
-                            .startingBudget,
+                        label: S.of(context).startingBudget,
                         currency: currency,
                       ),
                     ),
@@ -152,9 +147,7 @@ class _MainPageState extends State<MainPage> {
                   new Expanded(
                     child: new MinorValueCard(
                       value: spent,
-                      label: S
-                          .of(context)
-                          .sumOfExpenses,
+                      label: S.of(context).sumOfExpenses,
                       currency: currency,
                     ),
                   ),
@@ -162,13 +155,13 @@ class _MainPageState extends State<MainPage> {
               ),
               new HistoryDivider(),
               new Column(
-                children: expenses
-                    .map((expense) =>
-                new ExpenseHistoryRow(
-                  expense: expense,
-                  currency: currency,
-                ))
-                    .toList(),
+                children: expenses.map((expense) {
+                  return ExpenseHistoryRow(
+                    onDismissed: _deleteExpense,
+                    expense: expense,
+                    currency: currency,
+                  );
+                }).toList(),
               )
             ],
           ),

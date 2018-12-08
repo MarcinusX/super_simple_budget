@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:super_simple_budget/generated/i18n.dart';
+import 'package:super_simple_budget/widget/cut_corners_border.dart';
 
 class ChangeBudgetDialog extends StatefulWidget {
   final double previousBudget;
@@ -30,9 +31,12 @@ class _ChangeBudgetDialogState extends State<ChangeBudgetDialog> {
     return new AlertDialog(
       title: new Text(S.of(context).changeBudget),
       content: new TextField(
+        cursorColor: Colors.yellow,
         controller: _controller,
         keyboardType: TextInputType.number,
         decoration: new InputDecoration(
+            border:
+                CutCornersBorder(borderSide: BorderSide(color: Colors.yellow)),
             labelText: S.of(context).budget,
             hintText: widget.previousBudget?.toStringAsFixed(2) ?? ''),
       ),

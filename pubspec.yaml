@@ -4,11 +4,11 @@ description: Super simple budget app
 dependencies:
   flutter:
     sdk: flutter
-  intl: "^0.15.6"
-  intl_translation: "^0.16.6"
-  sqflite: "^0.8.9"
-  path_provider: "^0.4.0"
-  shared_preferences: "^0.4.1"
+  intl: "^0.15.7"
+  intl_translation: "^0.17.2"
+  sqflite: "^0.13.0"
+  path_provider: "^0.4.1"
+  shared_preferences: "^0.4.3"
   flutter_localizations:
     sdk: flutter
 

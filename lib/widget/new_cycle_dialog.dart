@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:super_simple_budget/generated/i18n.dart';
+import 'package:super_simple_budget/widget/cut_corners_border.dart';
 
 class NewCycleDialog extends StatefulWidget {
   @override
@@ -26,10 +27,13 @@ class _NewCycleDialogState extends State<NewCycleDialog> {
     return new AlertDialog(
       title: new Text(S.of(context).beginNewCycle),
       content: new TextField(
+        cursorColor: Colors.yellow,
         controller: _controller,
         keyboardType: TextInputType.number,
         decoration: new InputDecoration(
           labelText: S.of(context).budget,
+          border:
+              CutCornersBorder(borderSide: BorderSide(color: Colors.yellow)),
         ),
       ),
       actions: <Widget>[

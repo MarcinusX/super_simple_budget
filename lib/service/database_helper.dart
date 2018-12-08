@@ -34,6 +34,10 @@ create table $tableExpenses (
         .toList();
   }
 
+  Future<int> deleteExpense(Expense expense) {
+    return db.delete(tableExpenses, where: '$columnId = ${expense.id}');
+  }
+
   Future<int> deleteAllExpense() async {
     return await db.delete(tableExpenses);
   }

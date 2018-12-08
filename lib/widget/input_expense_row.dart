@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:super_simple_budget/generated/i18n.dart';
 import 'package:super_simple_budget/model/expense.dart';
+import 'package:super_simple_budget/widget/cut_corners_border.dart';
 
 class InputExpenseRow extends StatefulWidget {
   final Function(Expense) onClick;
@@ -36,12 +37,14 @@ class _InputExpenseRowState extends State<InputExpenseRow> {
             child: new Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4.0),
               child: new TextField(
+                cursorColor: Colors.yellow,
                 controller: _inputController,
                 keyboardType: TextInputType.number,
                 decoration: new InputDecoration(
-                  labelText: S
-                      .of(context)
-                      .newExpense,
+                  labelText: S.of(context).newExpense,
+                  border: CutCornersBorder(
+                    borderSide: BorderSide(color: Colors.yellow),
+                  ),
                 ),
               ),
             ),
@@ -54,12 +57,8 @@ class _InputExpenseRowState extends State<InputExpenseRow> {
                 child: new RaisedButton(
                   padding: new EdgeInsets.all(0.0),
                   child: new Text(
-                    S
-                        .of(context)
-                        .add
-                        .toUpperCase(),
-                    style: Theme
-                        .of(context)
+                    S.of(context).add.toUpperCase(),
+                    style: Theme.of(context)
                         .textTheme
                         .subhead
                         .copyWith(color: Colors.black),
