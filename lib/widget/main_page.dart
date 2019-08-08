@@ -39,27 +39,35 @@ class _MainPageState extends State<MainPage> {
     this.startBudget = widget.storageService.getStartingBudget() ?? 0.0;
   }
 
-  _loadExpenses() {
+  void _loadExpenses() {
     widget.storageService.getCurrentExpenses().then((result) => setState(() =>
         expenses = result
           ..sort((ex1, ex2) => ex2.dateTime.compareTo(ex1.dateTime))));
   }
 
-  _addExpense(Expense expense) {
+  void _addExpense(Expense expense) {
     widget.storageService.addExpense(expense);
     setState(() {
       expenses.insert(0, expense);
     });
   }
 
-  _deleteExpense(Expense expense) {
+  void _updateExpense(Expense expense) async {
+    Expense updatedExpense = await widget.storageService.updateExpense(expense);
+    int index = expenses.indexOf(expense);
+    setState(() {
+      expenses.replaceRange(index, index + 1, [updatedExpense]);
+    });
+  }
+
+  void _deleteExpense(Expense expense) {
     widget.storageService.deleteExpense(expense);
     setState(() {
       expenses.remove(expense);
     });
   }
 
-  _openCurrencyDialog() async {
+  void _openCurrencyDialog() async {
     Currency currency = await showDialog(
         context: context,
         builder: (context) {
@@ -68,12 +76,12 @@ class _MainPageState extends State<MainPage> {
             children: Currency.currencies
                 .map(
                   (currency) => new SimpleDialogOption(
-                        onPressed: () => Navigator.of(context).pop(currency),
-                        child: new ListTile(
-                          selected: currency == this.currency,
-                          title: new Text(currency.getName(context)),
-                        ),
-                      ),
+                    onPressed: () => Navigator.of(context).pop(currency),
+                    child: new ListTile(
+                      selected: currency == this.currency,
+                      title: new Text(currency.getName(context)),
+                    ),
+                  ),
                 )
                 .toList(),
           );
@@ -106,15 +114,15 @@ class _MainPageState extends State<MainPage> {
               }
             },
             itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-                  new PopupMenuItem<String>(
-                    value: 'NEW_CYCLE',
-                    child: new Text(S.of(context).beginNewCycle),
-                  ),
-                  new PopupMenuItem<String>(
-                    value: 'CURRENCY',
-                    child: new Text(S.of(context).changeCurrency),
-                  ),
-                ],
+              new PopupMenuItem<String>(
+                value: 'NEW_CYCLE',
+                child: new Text(S.of(context).beginNewCycle),
+              ),
+              new PopupMenuItem<String>(
+                value: 'CURRENCY',
+                child: new Text(S.of(context).changeCurrency),
+              ),
+            ],
           ),
         ],
       ),
@@ -157,6 +165,7 @@ class _MainPageState extends State<MainPage> {
               new Column(
                 children: expenses.map((expense) {
                   return ExpenseHistoryRow(
+                    onUpdated: _updateExpense,
                     onDismissed: _deleteExpense,
                     expense: expense,
                     currency: currency,

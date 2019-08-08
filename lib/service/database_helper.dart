@@ -25,6 +25,16 @@ create table $tableExpenses (
     return expense;
   }
 
+  Future<Expense> updateExpense(Expense expense) async {
+    await db.update(
+      tableExpenses,
+      expense.toMap(),
+      where: '$columnId = ?',
+      whereArgs: [expense.id],
+    );
+    return expense;
+  }
+
   Future<List<Expense>> getAllExpenses() async {
     return (await db.query(
       tableExpenses,

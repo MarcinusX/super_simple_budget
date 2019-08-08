@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -13,7 +12,7 @@ class S implements WidgetsLocalizations {
   const S();
 
   static const GeneratedLocalizationsDelegate delegate =
-  const GeneratedLocalizationsDelegate();
+    const GeneratedLocalizationsDelegate();
 
   static S of(BuildContext context) =>
       Localizations.of<S>(context, WidgetsLocalizations);
@@ -48,6 +47,10 @@ class S implements WidgetsLocalizations {
   String get startingBudget => "Starting budget";
 
   String get sumOfExpenses => "Sum of expenses";
+
+  //TODO generate this labels instead of putting them directly
+  String get editExpense => "Edit expense";
+  String get expense => "Expense";
 
   String currencyUSD(String) => "USD (\$)";
 }
@@ -96,6 +99,11 @@ class pl extends S {
   String get newExpense => "Nowy wydatek";
   @override
   String get budget => "Budżet";
+  //TODO generate this labels instead of putting them directly
+  @override
+  String get editExpense => "Edytuj wydatek";
+  @override
+  String get expense => "Expense";
   @override
   String currencyUSD(String) => "USD (\$)";
 }

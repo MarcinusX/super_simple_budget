@@ -30,6 +30,10 @@ class StorageService {
     return dbHelper.insertExpense(expense);
   }
 
+  Future<Expense> updateExpense(Expense expense) {
+    return dbHelper.updateExpense(expense);
+  }
+
   Future<void> deleteExpense(Expense expense) {
     return dbHelper.deleteExpense(expense);
   }
