@@ -20,9 +20,11 @@ class CardToSpend extends StatelessWidget {
           children: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(16.0),
-              child: new Text(
-                valueWithCurrency(leftToSpend, currency),
-                style: Theme.of(context).textTheme.display3,
+              child: FittedBox(
+                child: new Text(
+                  valueWithCurrency(leftToSpend, currency),
+                  style: Theme.of(context).textTheme.display3,
+                ),
               ),
             ),
             new Padding(
