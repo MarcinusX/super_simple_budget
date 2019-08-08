@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:super_simple_budget/generated/i18n.dart';
@@ -7,11 +8,14 @@ import 'package:super_simple_budget/widget/cut_corners_border.dart';
 
 class EditExpenseDialog extends StatefulWidget {
   final Expense expense;
+  final Function(Expense) onDelete;
 
-  const EditExpenseDialog({Key key, @required this.expense}) : super(key: key);
+  const EditExpenseDialog(
+      {Key key, @required this.expense, @required this.onDelete})
+      : super(key: key);
 
   @override
-  _EditExpenseDialogState createState() => new _EditExpenseDialogState();
+  _EditExpenseDialogState createState() => _EditExpenseDialogState();
 }
 
 class _EditExpenseDialogState extends State<EditExpenseDialog> {
@@ -22,10 +26,10 @@ class _EditExpenseDialogState extends State<EditExpenseDialog> {
   @override
   void initState() {
     super.initState();
-    _expenseController = new TextEditingController(
+    _expenseController = TextEditingController(
       text: widget.expense.value.toStringAsFixed(2),
     );
-    _commentController = new TextEditingController(
+    _commentController = TextEditingController(
       text: widget.expense.comment,
     );
   }
@@ -39,7 +43,19 @@ class _EditExpenseDialogState extends State<EditExpenseDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(S.of(context).editExpense),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(S.of(context).editExpense),
+          IconButton(
+            onPressed: () {
+              widget.onDelete(widget.expense);
+              Navigator.of(context).pop();
+            },
+            icon: Icon(Icons.delete),
+          )
+        ],
+      ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -74,7 +90,7 @@ class _EditExpenseDialogState extends State<EditExpenseDialog> {
       actions: <Widget>[
         FlatButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: new Text(S.of(context).cancel.toUpperCase()),
+          child: Text(S.of(context).cancel.toUpperCase()),
         ),
         FlatButton(
           onPressed: () {

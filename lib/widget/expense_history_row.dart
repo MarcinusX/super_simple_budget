@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -32,9 +31,11 @@ class ExpenseHistoryRow extends StatelessWidget {
           subtitle: expense.comment != null && expense.comment.isNotEmpty
               ? Text(expense.comment)
               : null,
-          trailing: Text(DateFormat(
-                  'EEEE, d MMMM', Localizations.localeOf(context).toString())
-              .format(expense.dateTime),),
+          trailing: Text(
+            DateFormat(
+                    'EEEE, d MMMM', Localizations.localeOf(context).toString())
+                .format(expense.dateTime),
+          ),
         ),
       ),
     );
@@ -44,7 +45,10 @@ class ExpenseHistoryRow extends StatelessWidget {
     EditExpenseResponse editExpenseResponse =
         await showDialog<EditExpenseResponse>(
       context: context,
-      builder: (context) => EditExpenseDialog(expense: expense),
+      builder: (context) => EditExpenseDialog(
+        expense: expense,
+        onDelete: onDismissed,
+      ),
     );
     if (editExpenseResponse != null) {
       expense.comment = editExpenseResponse.comment;
