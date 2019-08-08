@@ -51,6 +51,8 @@ class S implements WidgetsLocalizations {
   //TODO generate this labels instead of putting them directly
   String get editExpense => "Edit expense";
   String get expense => "Expense";
+  String get comment => "Comment";
+  String get expenseIsRequired => "Expense is required";
 
   String currencyUSD(String) => "USD (\$)";
 }
@@ -103,7 +105,9 @@ class pl extends S {
   @override
   String get editExpense => "Edytuj wydatek";
   @override
-  String get expense => "Expense";
+  String get expense => "Wydatek";
+  @override
+  String get expenseIsRequired => "Expense is required";
   @override
   String currencyUSD(String) => "USD (\$)";
 }

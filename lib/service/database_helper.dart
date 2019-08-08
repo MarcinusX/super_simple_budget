@@ -9,15 +9,30 @@ class DatabaseHelper {
   Database db;
 
   Future open(String path) async {
-    db = await openDatabase(path, version: 1,
-        onCreate: (Database db, int version) async {
-      await db.execute('''
+    db = await openDatabase(
+      path,
+      version: 2,
+      onCreate: _onCreateDatabase,
+      onUpgrade: _onUpgradeDatabase,
+    );
+  }
+
+  void _onCreateDatabase(Database db, int version) async {
+    await db.execute('''
 create table $tableExpenses ( 
   $columnId integer primary key autoincrement, 
   $columnValue real not null,
-  $columnDate integer not null)
+  $columnDate integer not null,
+  $columnComment text)
 ''');
-    });
+  }
+
+  void _onUpgradeDatabase(Database db, int oldVersion, int newVersion) async {
+    if (oldVersion < newVersion) {
+      await db.execute(
+        "alter table $tableExpenses add column $columnComment text;",
+      );
+    }
   }
 
   Future<Expense> insertExpense(Expense expense) async {
@@ -38,7 +53,7 @@ create table $tableExpenses (
   Future<List<Expense>> getAllExpenses() async {
     return (await db.query(
       tableExpenses,
-      columns: [columnId, columnValue, columnDate],
+      columns: [columnId, columnValue, columnDate, columnComment],
     ))
         .map((map) => new Expense.fromMap(map))
         .toList();

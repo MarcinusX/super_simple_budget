@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.yellow,
         accentColor: Colors.yellow,
+        errorColor: Color.fromRGBO(255, 153, 153, 1),
       ),
       home: new MainPage(storageService: databaseService),
     );

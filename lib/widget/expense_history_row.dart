@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:super_simple_budget/model/currency.dart';
+import 'package:super_simple_budget/model/edit_expense_response.dart';
 import 'package:super_simple_budget/model/expense.dart';
 import 'package:super_simple_budget/widget/edit_expense_dialog.dart';
 
@@ -19,30 +22,33 @@ class ExpenseHistoryRow extends StatelessWidget {
     return Dismissible(
       onDismissed: (_) => onDismissed(expense),
       key: Key(expense.id.toString()),
-      child: new Card(
-        shape: new BeveledRectangleBorder(
+      child: Card(
+        shape: BeveledRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
-        child: new ListTile(
-          onTap: () => _onTap(context, expense.value),
-          title: new Text(valueWithCurrency(expense.value, currency)),
-          trailing: new Text(new DateFormat(
+        child: ListTile(
+          onTap: () => _onTap(context, expense),
+          title: Text(valueWithCurrency(expense.value, currency)),
+          subtitle: expense.comment != null && expense.comment.isNotEmpty
+              ? Text(expense.comment)
+              : null,
+          trailing: Text(DateFormat(
                   'EEEE, d MMMM', Localizations.localeOf(context).toString())
-              .format(expense.dateTime)),
+              .format(expense.dateTime),),
         ),
       ),
     );
   }
 
-  void _onTap(BuildContext context, double previousExpense) async {
-    double newExpenseValue = await showDialog<double>(
+  void _onTap(BuildContext context, Expense expense) async {
+    EditExpenseResponse editExpenseResponse =
+        await showDialog<EditExpenseResponse>(
       context: context,
-      builder: (context) => new EditExpenseDialog(
-        previousExpense: previousExpense,
-      ),
+      builder: (context) => EditExpenseDialog(expense: expense),
     );
-    if (newExpenseValue != null) {
-      expense.value = newExpenseValue;
+    if (editExpenseResponse != null) {
+      expense.comment = editExpenseResponse.comment;
+      expense.value = editExpenseResponse.value;
       onUpdated(expense);
     }
   }
