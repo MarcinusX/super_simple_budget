@@ -45,6 +45,7 @@ android {
     signingConfigs {
         debug {}
         release {
+            // this condition has to be removed when creating release app bundle
             if (keystoreProperties.hasProperty('keyAlias')) {
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
