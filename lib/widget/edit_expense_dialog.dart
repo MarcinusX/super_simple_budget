@@ -42,79 +42,83 @@ class _EditExpenseDialogState extends State<EditExpenseDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: AlertDialog(
-        titlePadding: EdgeInsets.only(left: 24, top: 12, right: 8),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(S.of(context).editExpense),
-            RawMaterialButton(
-              onPressed: () {
-                widget.onDelete(widget.expense);
-                Navigator.of(context).pop();
-              },
-              child: Icon(Icons.delete),
-              shape: CircleBorder(),
-              padding: EdgeInsets.all(12),
-              constraints: const BoxConstraints(minWidth: 0),
-            )
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            TextField(
-              cursorColor: Colors.yellow,
-              controller: _expenseController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: S.of(context).expense,
-                errorText:
-                    _isExpenseValueValid ? null : S.of(context).expenseIsRequired,
-                border: CutCornersBorder(
-                  borderSide: BorderSide(color: Colors.yellow),
-                ),
-              ),
-            ),
-            SizedBox(height: 16),
-            TextField(
-              cursorColor: Colors.yellow,
-              maxLength: 30,
-              controller: _commentController,
-              decoration: InputDecoration(
-                counterText: '',
-                labelText: S.of(context).comment,
-                border: CutCornersBorder(
-                  borderSide: BorderSide(color: Colors.yellow),
-                ),
-              ),
-            ),
-          ],
-        ),
-        actions: <Widget>[
-          FlatButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(S.of(context).cancel.toUpperCase()),
-          ),
-          FlatButton(
+    return AlertDialog(
+      titlePadding: EdgeInsets.only(left: 24, top: 12, right: 8),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(S.of(context).editExpense),
+          RawMaterialButton(
             onPressed: () {
-              setState(() {
-                _isExpenseValueValid = _expenseController.text.trim().isNotEmpty;
-              });
-              if (_isExpenseValueValid) {
-                Navigator.of(context).pop(
-                  EditExpenseResponse(
-                    double.parse(_expenseController.value.text),
-                    _commentController.value.text,
-                  ),
-                );
-              }
+              widget.onDelete(widget.expense);
+              Navigator.of(context).pop();
             },
-            child: Text(S.of(context).confirm.toUpperCase()),
-          ),
+            child: Icon(Icons.delete),
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(12),
+            constraints: const BoxConstraints(minWidth: 0),
+          )
         ],
       ),
+      content: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              TextField(
+                cursorColor: Colors.yellow,
+                controller: _expenseController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: S.of(context).expense,
+                  errorText: _isExpenseValueValid
+                      ? null
+                      : S.of(context).expenseIsRequired,
+                  border: CutCornersBorder(
+                    borderSide: BorderSide(color: Colors.yellow),
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
+              TextField(
+                cursorColor: Colors.yellow,
+                maxLength: 30,
+                controller: _commentController,
+                decoration: InputDecoration(
+                  counterText: '',
+                  labelText: S.of(context).comment,
+                  border: CutCornersBorder(
+                    borderSide: BorderSide(color: Colors.yellow),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(S.of(context).cancel.toUpperCase()),
+        ),
+        FlatButton(
+          onPressed: () {
+            setState(() {
+              _isExpenseValueValid = _expenseController.text.trim().isNotEmpty;
+            });
+            if (_isExpenseValueValid) {
+              Navigator.of(context).pop(
+                EditExpenseResponse(
+                  double.parse(_expenseController.value.text),
+                  _commentController.value.text,
+                ),
+              );
+            }
+          },
+          child: Text(S.of(context).confirm.toUpperCase()),
+        ),
+      ],
     );
   }
 }
