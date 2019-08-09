@@ -43,16 +43,20 @@ class _EditExpenseDialogState extends State<EditExpenseDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      titlePadding: EdgeInsets.only(left: 24, top: 12, right: 8),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(S.of(context).editExpense),
-          IconButton(
+          RawMaterialButton(
             onPressed: () {
               widget.onDelete(widget.expense);
               Navigator.of(context).pop();
             },
-            icon: Icon(Icons.delete),
+            child: Icon(Icons.delete),
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(12),
+            constraints: const BoxConstraints(minWidth: 0),
           )
         ],
       ),
