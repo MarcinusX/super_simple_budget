@@ -14,7 +14,7 @@ class Currency {
   static Currency gbp =
       new Currency._("£", "GBP", true, (context) => S.of(context).currencyGBP);
   static Currency usd = new Currency._(
-      "\$", "USD", true, (context) => S.of(context).currencyUSD('\$'));
+      "\$", "USD", true, (context) => S.of(context).currencyUSD);
   static Currency eur =
       new Currency._("€", "EUR", false, (context) => S.of(context).currencyEUR);
   static Currency pln = new Currency._(

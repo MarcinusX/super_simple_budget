@@ -17,5 +17,8 @@
   "cancel": "Anuluj",
   "confirm": "Zatwierdź",
   "changeBudget": "Zmień budżet"
-
+  "editExpense": "Edytuj wydatek",
+  "expense": "Wydatek",
+  "comment": "Komentarz",
+  "expenseIsRequired": "Wydatek jest wymagany"
 }
