@@ -9,6 +9,7 @@ dependencies:
   sqflite: "^0.13.0"
   path_provider: "^0.4.1"
   shared_preferences: "^0.4.3"
+  auto_size_text: ^2.0.1
   flutter_localizations:
     sdk: flutter
 

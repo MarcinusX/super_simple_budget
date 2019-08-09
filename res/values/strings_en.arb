@@ -16,5 +16,9 @@
   "budget": "Budget",
   "cancel": "Cancel",
   "confirm": "Confirm",
-  "changeBudget": "Change budget"
+  "changeBudget": "Change budget",
+  "editExpense": "Edit expense",
+  "expense": "Expense",
+  "comment": "Comment",
+  "expenseIsRequired": "Expense is required"
 }
