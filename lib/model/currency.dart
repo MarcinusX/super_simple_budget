@@ -19,12 +19,15 @@ class Currency {
       new Currency._("€", "EUR", false, (context) => S.of(context).currencyEUR);
   static Currency pln = new Currency._(
       "zł", "PLN", false, (context) => S.of(context).currencyPLN);
+  static Currency inr = new Currency._(
+      "₹", "INR", false, (context) => S.of(context).currencyINR);
 
   static List<Currency> currencies = [
     Currency.usd,
     Currency.gbp,
+    Currency.inr,
     Currency.eur,
-    Currency.pln
+    Currency.pln,
   ];
 
   @override
@@ -36,6 +39,8 @@ class Currency {
         return gbp;
       case "USD":
         return usd;
+      case "INR":
+        return inr;
       case "EUR":
         return eur;
       case "PLN":
