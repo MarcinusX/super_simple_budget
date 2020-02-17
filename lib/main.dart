@@ -6,6 +6,12 @@ import 'package:super_simple_budget/widget/cut_corners_border.dart';
 import 'package:super_simple_budget/widget/main_page.dart';
 
 void main() async {
+
+  // Suggested by flutter: 
+  //    If you're running an application and need to access the binary messenger before `runApp()` has been called 
+  //    (for example, during plugin initialization), then you need to explicitly call the `WidgetsFlutterBinding.ensureInitialized()` first.
+  WidgetsFlutterBinding.ensureInitialized();
+  
   StorageService storageService = new StorageService();
   await storageService.open();
   runApp(new MyApp(databaseService: storageService));

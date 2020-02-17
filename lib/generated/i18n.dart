@@ -34,6 +34,7 @@ class S implements WidgetsLocalizations {
   String get currencyEUR => "EUR (€)";
   String get currencyGBP => "GBP (£)";
   String get currencyPLN => "PLN (zł)";
+  String get currencyINR => "INR (₹)";
   String get editExpense => "Edit expense";
   String get expense => "Expense";
   String get expenseIsRequired => "Expense is required";
